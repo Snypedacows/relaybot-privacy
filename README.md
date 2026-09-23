@@ -13,9 +13,9 @@ Public privacy policy for App Store Connect. Matches the in-app policy.
 
 No paid domain required.
 
-## Driver LoadNet
+## TruckFlow IC: Budget Manager
 
-Privacy policy for Driver LoadNet (does not replace the Relaybot page at the site root):
+Privacy policy for TruckFlow IC: Budget Manager (short display name TruckFlow IC; formerly Driver LoadNet). This page does not replace the Relaybot page at the site root. The URL path stays `driver-loadnet/`.
 
 - Source: [`driver-loadnet/index.html`](driver-loadnet/index.html)
 - Live: https://snypedacows.github.io/relaybot-privacy/driver-loadnet/
