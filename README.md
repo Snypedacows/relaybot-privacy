@@ -12,3 +12,10 @@ Public privacy policy for App Store Connect. Matches the in-app policy.
 5. Paste that URL into App Store Connect → App Privacy / Privacy Policy URL.
 
 No paid domain required.
+
+## Driver LoadNet
+
+Privacy policy for Driver LoadNet (does not replace the Relaybot page at the site root):
+
+- Source: [`driver-loadnet/index.html`](driver-loadnet/index.html)
+- Live: https://snypedacows.github.io/relaybot-privacy/driver-loadnet/
