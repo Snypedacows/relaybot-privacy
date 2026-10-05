@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TruckFlow IC: use with an AI assistant</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:720px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#111}
+h1{font-size:1.6rem} h2{font-size:1.15rem;margin-top:1.6rem} ul{padding-left:1.2rem}
+.meta{color:#555;font-size:.95rem}
+a{color:#0b57d0}
+pre{background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:1rem;white-space:pre-wrap;word-break:break-word;font-size:.9rem;line-height:1.45}
+button{font:inherit;padding:.4rem .9rem;border:1px solid #0b57d0;background:#0b57d0;color:#fff;border-radius:6px;cursor:pointer}
+button:hover{background:#0947b0}
+#copy-status{margin-left:.6rem;color:#555;font-size:.95rem}
+</style>
+</head>
+<body>
+<h1>TruckFlow IC: use with an AI assistant</h1>
+<p class="meta"><strong>Developer:</strong> Robert Cook / RAM Freight<br/>
+<strong>Support:</strong> <a href="mailto:driverloadnet@agentmail.to">driverloadnet@agentmail.to</a></p>
+<p>An AI assistant can send a TruckFlow link for a load. Tapping that link on the iPhone with TruckFlow IC installed opens the load on the <strong>Confirm Load Scan</strong> screen for review. Nothing is saved until the driver saves it.</p>
+<h2>Instructions for your AI assistant</h2>
+<p>Copy the text below and give it to your AI assistant.</p>
+<p><button type="button" id="copy-btn">Copy</button><span id="copy-status" aria-live="polite"></span></p>
+<pre id="assistant-text">TruckFlow IC add-load link
+
+Send the driver one link per load. Tapping it on the iPhone with TruckFlow IC installed opens the load on the Confirm Load Scan screen for review. TruckFlow never saves it automatically. The driver checks every field and saves it himself.
+
+Format:
+truckflow://add-load?pickup=CITY-ST&amp;drop=CITY-ST&amp;pickupDate=YYYY-MM-DD&amp;deliveryDate=YYYY-MM-DD&amp;miles=N&amp;deadhead=N&amp;deadheadFrom=CITY-ST&amp;linehaul=DOLLARS&amp;fsc=DOLLARS&amp;weight=LBS
+
+Parameters (all optional):
+- pickup: pickup city and state.
+- drop: delivery city and state.
+- deadheadFrom: city and state where the empty (deadhead) miles start.
+- pickupDate: pickup date, YYYY-MM-DD.
+- deliveryDate: delivery date, YYYY-MM-DD.
+- miles: loaded miles, 0 to 5000.
+- deadhead: deadhead (empty) miles, 0 to 5000.
+- linehaul: linehaul pay in dollars with cents, like 5451.00. No $ sign or commas.
+- fsc: fuel surcharge in dollars with cents, like 1583.12.
+- weight: cargo weight in pounds, 0 to 80000.
+
+City and state: use a lowercase slug with hyphens and the 2-letter state last, like dallas-tx or st-louis-mo. "Dallas, TX" also works if it is URL-encoded (Dallas%2C%20TX).
+
+Rules:
+- Never put an all-in or total rate in linehaul. Linehaul is the line rate without FSC. If you only know the all-in rate, leave linehaul out. A rate or allIn parameter is only shown as a note.
+- Leave out any value you are not sure of. A missing, unreadable, or out-of-range value stays blank for the driver to fill in.
+- The link must be tapped on the iPhone that has TruckFlow IC installed.
+
+Sample:
+truckflow://add-load?pickup=dallas-tx&amp;drop=st-louis-mo&amp;pickupDate=2026-10-06&amp;deliveryDate=2026-10-07&amp;miles=630&amp;deadhead=45&amp;linehaul=5451.00&amp;fsc=1583.12
+
+Public page: https://snypedacows.github.io/relaybot-privacy/driver-loadnet/assistant/</pre>
+<h2>More</h2>
+<p><a href="../">TruckFlow IC privacy policy</a></p>
+<h2>Contact</h2>
+<p>Questions or support: <strong><a href="mailto:driverloadnet@agentmail.to">driverloadnet@agentmail.to</a></strong></p>
+<script>
+(function(){
+  var btn=document.getElementById('copy-btn');
+  var status=document.getElementById('copy-status');
+  btn.addEventListener('click',function(){
+    var text=document.getElementById('assistant-text').textContent;
+    if(!navigator.clipboard){status.textContent='Copy not supported. Select the text and copy it.';return;}
+    navigator.clipboard.writeText(text).then(function(){
+      status.textContent='Copied.';
+      setTimeout(function(){status.textContent='';},2500);
+    },function(){
+      status.textContent='Copy failed. Select the text and copy it.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
