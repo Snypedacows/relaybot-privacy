@@ -19,38 +19,52 @@ button:hover{background:#0947b0}
 <h1>TruckFlow IC: use with an AI assistant</h1>
 <p class="meta"><strong>Developer:</strong> Robert Cook / RAM Freight<br/>
 <strong>Support:</strong> <a href="mailto:driverloadnet@agentmail.to">driverloadnet@agentmail.to</a></p>
-<p>An AI assistant can send a TruckFlow link for a load. Tapping that link on the iPhone with TruckFlow IC installed opens the load on the <strong>Confirm Load Scan</strong> screen for review. Nothing is saved until the driver saves it.</p>
+<p>An AI assistant can send a TruckFlow <strong>load card</strong>: a short block of text with the load details. The driver copies it and taps <strong>Paste Load from AI</strong> on the New Load screen (or screenshots it and picks the screenshot), and the load opens on the <strong>Confirm Load Scan</strong> screen for review. Nothing is saved until the driver saves it.</p>
 <h2>Instructions for your AI assistant</h2>
 <p>Copy the text below and give it to your AI assistant.</p>
 <p><button type="button" id="copy-btn">Copy</button><span id="copy-status" aria-live="polite"></span></p>
-<pre id="assistant-text">TruckFlow IC add-load link
+<pre id="assistant-text">TruckFlow IC load card
 
-Send the driver one link per load. Tapping it on the iPhone with TruckFlow IC installed opens the load on the Confirm Load Scan screen for review. TruckFlow never saves it automatically. The driver checks every field and saves it himself.
+Send the driver one load card per load, as plain text in a code block. The driver copies it and taps Paste Load from AI on the New Load screen (or screenshots it and picks the screenshot). TruckFlow opens it on the Confirm Load Scan screen for review and never saves it automatically. The driver checks every field and saves it himself.
 
-Format:
-truckflow://add-load?pickup=CITY-ST&amp;drop=CITY-ST&amp;pickupDate=YYYY-MM-DD&amp;deliveryDate=YYYY-MM-DD&amp;miles=N&amp;deadhead=N&amp;deadheadFrom=CITY-ST&amp;linehaul=DOLLARS&amp;fsc=DOLLARS&amp;weight=LBS
+Format (one field per line, exactly these labels, in this order):
+TruckFlow Load
+Pickup: City, ST
+Delivery: City, ST
+Pickup Date: MM/DD/YYYY HH:MM AM
+Delivery Date: MM/DD/YYYY HH:MM PM
+Loaded Miles: N
+Deadhead: N
+Deadhead From: City, ST
+Linehaul: $0,000.00
+FSC: $0,000.00
+Weight: 00,000 lbs
 
-Parameters (all optional):
-- pickup: pickup city and state.
-- drop: delivery city and state.
-- deadheadFrom: city and state where the empty (deadhead) miles start.
-- pickupDate: pickup date, YYYY-MM-DD.
-- deliveryDate: delivery date, YYYY-MM-DD.
-- miles: loaded miles, 0 to 5000.
-- deadhead: deadhead (empty) miles, 0 to 5000.
-- linehaul: linehaul pay in dollars with cents, like 5451.00. No $ sign or commas.
-- fsc: fuel surcharge in dollars with cents, like 1583.12.
-- weight: cargo weight in pounds, 0 to 80000.
-
-City and state: use a lowercase slug with hyphens and the 2-letter state last, like dallas-tx or st-louis-mo. "Dallas, TX" also works if it is URL-encoded (Dallas%2C%20TX).
+Fields:
+- Pickup / Delivery / Deadhead From: city, comma, 2-letter state, like Dallas, TX or St. Louis, MO. Deadhead From is where the empty miles start.
+- Pickup Date / Delivery Date: MM/DD/YYYY with a 12-hour time and AM or PM, like 10/06/2026 08:00 AM.
+- Loaded Miles / Deadhead: whole miles, numbers only.
+- Linehaul: line rate without fuel surcharge, $ with cents, like $5,451.00.
+- FSC: fuel surcharge, $ with cents, like $1,583.12.
+- Weight: cargo weight in pounds, like 42,000 lbs.
 
 Rules:
-- Never put an all-in or total rate in linehaul. Linehaul is the line rate without FSC. If you only know the all-in rate, leave linehaul out. A rate or allIn parameter is only shown as a note.
-- Leave out any value you are not sure of. A missing, unreadable, or out-of-range value stays blank for the driver to fill in.
-- The link must be tapped on the iPhone that has TruckFlow IC installed.
+- Never put an all-in or total rate on the Linehaul line. If you only know the all-in rate, leave the Linehaul line out.
+- Leave out any line you are not sure of. A missing value stays blank for the driver to fill in.
+- Don't add other text inside the card.
 
 Sample:
-truckflow://add-load?pickup=dallas-tx&amp;drop=st-louis-mo&amp;pickupDate=2026-10-06&amp;deliveryDate=2026-10-07&amp;miles=630&amp;deadhead=45&amp;linehaul=5451.00&amp;fsc=1583.12
+TruckFlow Load
+Pickup: Dallas, TX
+Delivery: St. Louis, MO
+Pickup Date: 10/06/2026 08:00 AM
+Delivery Date: 10/07/2026 02:00 PM
+Loaded Miles: 630
+Deadhead: 45
+Deadhead From: Fort Worth, TX
+Linehaul: $5,451.00
+FSC: $1,583.12
+Weight: 42,000 lbs
 
 Public page: https://snypedacows.github.io/relaybot-privacy/driver-loadnet/assistant/</pre>
 <h2>More</h2>
