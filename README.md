@@ -19,3 +19,12 @@ Privacy policy for TruckFlow IC: Budget Manager (short display name TruckFlow IC
 
 - Source: [`driver-loadnet/index.html`](driver-loadnet/index.html)
 - Live: https://snypedacows.github.io/relaybot-privacy/driver-loadnet/
+
+## Sparkwick Isles: Math Quest
+
+Privacy policy and support for Sparkwick Isles: Math Quest, a K–12 math game for iPhone and iPad. This page does not replace the other apps’ pages on this site.
+
+- Privacy source: [`sparkwick-isles/index.html`](sparkwick-isles/index.html)
+- Live privacy: https://snypedacows.github.io/relaybot-privacy/sparkwick-isles/
+- Support source: [`sparkwick-isles/support/index.html`](sparkwick-isles/support/index.html)
+- Live support: https://snypedacows.github.io/relaybot-privacy/sparkwick-isles/support/
